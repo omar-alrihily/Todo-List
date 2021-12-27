@@ -2,12 +2,17 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 import axios from "axios";
+import { Routes, Route, Link } from "react-router-dom";
+
 import Todo from "./components/Todo";
 import Add from "./components/Add";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
   useEffect(() => {
     getData();
   }, []);
@@ -112,27 +117,51 @@ export default function App() {
   ));
   return (
     <div className="App">
-      <p>app</p>
-      {/* click on button should bring all Data */}
-      <button onClick={getData}>GET TASKS</button>
-      <button onClick={deleteTasks}>DELETE Completed tasks </button>
-      <button
-        onClick={() => {
-          filterData(true);
-        }}
-      >
-        GET DONE
-      </button>
-      <button
-        onClick={() => {
-          filterData(false);
-        }}
-      >
-        GET PENDING
-      </button>
+      <p>APP</p>
+      <p>Name: {username}</p>
 
-      <Add createFunc={postNewTodo} />
-      {mapOverTasks}
+      <nav>
+        <Link to="/home">Home</Link> {" | "}
+        <Link to="/login">Login</Link> {" | "}
+        <Link to="/register">Register</Link>
+      </nav>
+      <br />
+
+      <Routes>
+        <Route
+          path="/home"
+          element={
+            <div className="Home">
+              {/* click on button should bring all Data */}
+              <button onClick={getData}>GET TASKS</button>
+              <button onClick={deleteTasks}>DELETE Completed tasks </button>
+              <button
+                onClick={() => {
+                  filterData(true);
+                }}
+              >
+                GET DONE
+              </button>
+              <button
+                onClick={() => {
+                  filterData(false);
+                }}
+              >
+                GET PENDING
+              </button>
+              <Add createFunc={postNewTodo} />
+              {mapOverTasks}
+            </div>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Login setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />
+          }
+        />
+        <Route path="/register" element={<Register />} />
+      </Routes>
     </div>
   );
 }
