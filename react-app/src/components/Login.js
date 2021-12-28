@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function Login(props) {
-  const [email, setEmail] = useState("m.jouza3@gmail.com");
+  const [email, setEmail] = useState("omar@gogle.com");
   const [password, setPassword] = useState("1234");
 
   const loginFunc = (e) => {

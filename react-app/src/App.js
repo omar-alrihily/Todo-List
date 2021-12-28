@@ -107,6 +107,11 @@ export default function App() {
         console.log("ERR: ", err);
       });
   };
+
+   const logoutFunc = () => {
+    setIsLoggedIn(false);
+    setUsername("");
+  };
   const mapOverTasks = tasks.map((taskObj, i) => (
     <Todo
       key={taskObj._id}
@@ -115,6 +120,8 @@ export default function App() {
       toggleTodo={toggleTodo}
     />
   ));
+
+ 
   return (
     <div className="App">
       <p>APP</p>
@@ -126,7 +133,7 @@ export default function App() {
         <Link to="/register">Register</Link>
       </nav>
       <br />
-
+<button onClick={logoutFunc}>logout</button>
       <Routes>
         <Route
           path="/home"
