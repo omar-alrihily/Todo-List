@@ -28,39 +28,61 @@ export default function Register() {
   };
 
   return (
-    <div className="Register">
-      <form action="">
-        <label htmlFor="email">Email:</label>
+    <div className=" Login d-flex justify-content-center">
+      <form className="d-grid ">
+      <div className="form-floating ">
+
+      
         <input
-          type="email"
-          placeholder="Write email here ..."
+       type="email"
+       className="form-control"
+       id="floatingInput"
           onChange={(e) => {
             setEmail(e.target.value);
           }}
           value={email}
         />
+        <label htmlFor="floatingInput">Email address</label>
+        
+        </div>
+
+
+      
         <br />
-        <label htmlFor="password">Password:</label>
+        <div className="form-floating">
+        
         <input
           type="password"
-          placeholder="Write password here ..."
+          //placeholder="Write password here ..."
+          className="form-control"
+          id="floatingPassword"
           onChange={(e) => {
             setPassword(e.target.value);
           }}
           value={password}
         />
+         <label htmlFor="floatingPassword">Password</label>
+        </div>
+
         <br />
-        <label htmlFor="username">Username:</label>
+
+        <div className="form-floating">
+        
         <input
           type="text"
-          placeholder="Write username here ..."
+          // placeholder="Write username here ..."
+          className="form-control"
+          id="floatingInput"
           onChange={(e) => {
             setUsername(e.target.value);
           }}
           value={username}
         />
+        <label htmlFor="floatingInput">Username</label>
+
+       </div>
         <br />
-        <input type="submit" value="Register" onClick={registerFunc} />
+        <input type="submit"  className="btn btn-primary btn-lg m-3" value="Register" onClick={registerFunc} />
         <Link to='/login'>Have An Account?</Link>
       </form>
     </div>
